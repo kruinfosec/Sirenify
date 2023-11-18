@@ -108,4 +108,13 @@ class Sirenify:
         try:
             # Select the previous song in the list
             self.songlist.selection_clear(0, END)
-           
+            self.songlist.selection_set(self.songs.index(self.current_song) - 1)
+            self.current_song = self.songs[self.songlist.curselection()[0]]
+            self.play_music()
+        except IndexError:
+            pass
+
+if __name__ == "__main__":
+    root = Tk()
+    app = Sirenify(root)
+    root.mainloop()
